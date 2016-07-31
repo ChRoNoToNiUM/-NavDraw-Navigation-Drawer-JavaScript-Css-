@@ -1,17 +1,19 @@
 function NavDrawJS(args){
-    args = args || {};
-    /*{
-      header: document.createElement('div'),
-      nav_touch_bar: document.createElement('div'),
-      hamburger: document.createElement('div'),
-      first_hamb_layer: document.createElement('span'),
-      middle_hamb_layer: document.createElement('span'),
-      last_hamb_layer: document.createElement('span') 
-    };*/
+    if (args !== undefined){
+      if (args.DOM !== undefined){
+        args.DOM.header = document.createElement('div');
+        args.DOM.nav_touch_bar = document.createElement('div');
+        args.DOM.hamburger = document.createElement('div');
+        args.DOM.first_hamb_layer = document.createElement('span');
+        args.DOM.middle_hamb_layer = document.createElement('span');
+        args.DOM.last_hamb_layer = document.createElement('span');
+      } else if (args.DOM === undefined){
+          
+      }
+    };
   
-  var hamb;
-  hamb =  args.DOM.hamburger || document.getElementById("hamb");
-  var    first_hamb_layer = args.DOM.first_hamb_layer ? args.DOM.first_hamb_layer : document.getElementById('first_hamb_layer'),
+  var hamb =  args.DOM.hamburger,
+      first_hamb_layer = args.DOM.first_hamb_layer ? args.DOM.first_hamb_layer : document.getElementById('first_hamb_layer'),
       middle_hamb_layer = args.DOM.middle_hamb_layer ? args.DOM.middle_hamb_layer : document.getElementById('middle_hamb_layer'),
       last_hamb_layer = args.DOM.last_hamb_layer ? args.DOM.last_hamb_layer : document.getElementById('last_hamb_layer'),
       
