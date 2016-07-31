@@ -1,2 +1,2 @@
-# NawDraw v1.0
-Navigation Drawer like Google Android apps drawer with rolling hamburger on javascript &amp; css
+# NawDrawJS v1.0
+Navigation Drawer like Drawer from Android Support Library v4 rolling hamburger.
