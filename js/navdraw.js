@@ -1,7 +1,8 @@
 function NavDrawJS(args){
-  if (args == undefined) args = false;
-  if (args.DOM == undefined){
+  if (args != undefined){
+    args = false;
     args.DOM = false;
+  } else {
     /*{
       header: document.createElement('div'),
       nav_touch_bar: document.createElement('div'),
