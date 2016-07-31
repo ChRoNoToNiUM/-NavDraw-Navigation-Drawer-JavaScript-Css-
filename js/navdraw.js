@@ -1,7 +1,5 @@
 function NavDrawJS(args){
-  if (args != undefined){
-    args = false;
-  } else {
+    args = args || {};
     /*{
       header: document.createElement('div'),
       nav_touch_bar: document.createElement('div'),
@@ -10,7 +8,6 @@ function NavDrawJS(args){
       middle_hamb_layer: document.createElement('span'),
       last_hamb_layer: document.createElement('span') 
     };*/
-  }
   
   var hamb;
   hamb =  args.DOM.hamburger || document.getElementById("hamb");
