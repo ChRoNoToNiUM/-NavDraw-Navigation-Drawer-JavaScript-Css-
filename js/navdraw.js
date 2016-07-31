@@ -1,7 +1,6 @@
 function NavDrawJS(args){
   if (args != undefined){
     args = false;
-    args.DOM = false;
   } else {
     /*{
       header: document.createElement('div'),
