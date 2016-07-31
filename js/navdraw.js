@@ -192,5 +192,30 @@ function NavDrawJS(args){
         } 
       }
     }
-  }
+  };
+  console.log('[9/'+log_steps+'] NavDraw:  onDrawerMove() Initialized');
+  
+  window.onmouseup = function(ev){
+    var nav_bar_offsetLeft = getCoords(nav_draw).left;
+    
+    if (touched == true){
+      touched = false;
+      setTransition('.2s');
+      if (pageX_temp != ev.pageX){
+        if (nav_bar_offsetLeft < -135){ 
+          if (nav_draw.className == 'opened') placeDrawerLeft('360');
+          else placeDrawerLeft('0');
+        }
+        else if (nav_bar_offsetLeft > -135 || nav_bar_offsetLeft == -135) { placeDrawerRight(); } 
+      }
+    }
+  };
+  console.log('[10/'+log_steps+'] NavDraw:  onMouseUp() Initialized');
+  
+  
+  addListener(hamb, 'click', hamurgerClick, false);
+  
+  console.log('[11/'+log_steps+'] NavDraw:  Events Attached');
+  console.log('NavDraw:  NavDraw is finaly initialized and ready to work :)');
+  console.info('#### Powered by [C-h-R-o-N-o-T-o-N-i-U-m] 2016 ####');
 }
