@@ -8,7 +8,7 @@ function NavDrawJS(args){
       hamburger: document.createElement('div'),
       first_hamb_layer: document.createElement('span'),
       middle_hamb_layer: document.createElement('span'),
-      last_hamb_layer: document.createElement('span'); 
+      last_hamb_layer: document.createElement('span') 
     };*/
   }
   
