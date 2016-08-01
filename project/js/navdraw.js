@@ -1,7 +1,5 @@
 function NavDrawJS(args){
-  if (typeof options === 'undefined') {
-    options = {};
-  }
+  if (typeof options === 'undefined') { options = {}; }
   
   function isDefined(flag,el,typ,defId,defClass){
     function setEl(){
@@ -19,9 +17,6 @@ function NavDrawJS(args){
     }
   }
   
-  
-  
-  
   options.header = isDefined(false,options.header,'div','header');
   options.head_container = isDefined(false,options.head_container,'div','head_container')
   options.nav_draw = isDefined(false,options.nav_draw,'div','nav_draw','closed');
@@ -30,7 +25,6 @@ function NavDrawJS(args){
   options.first_hamb_layer = isDefined(true,options.first_hamb_layer,'span','first_hamb_layer','hamb_layer');
   options.middle_hamb_layer = isDefined(true,options.middle_hamb_layer,'span','middle_hamb_layer','hamb_layer');
   options.last_hamb_layer = isDefined(true,options.last_hamb_layer,'span','last_hamb_layer','hamb_layer');
-  
   
   options.hamburger.appendChild(options.first_hamb_layer);
   options.hamburger.appendChild(options.middle_hamb_layer);
@@ -62,8 +56,7 @@ function NavDrawJS(args){
           margin-top: 0;\
           background-color: #fff;\
         ",
-      
-      
+        
       pageX_temp,
       touched = false,
       shiftX,
