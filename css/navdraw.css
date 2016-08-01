@@ -11,8 +11,9 @@ html, body {
 #head_container {
   position: fixed;
   top: 0; right: 0; left: 0;
-  height: inherit;
+  height: 50px;
   box-shadow: 0 1px 3px #000;
+  background-color: #f77255;
 }
 #hamb {
   width: 50px;
