@@ -1,24 +1,53 @@
-function NavDrawJS(args){
-    if (args !== undefined){
-      if (args.DOM !== undefined){
-        args.DOM.header = document.createElement('div');
-        args.DOM.nav_touch_bar = document.createElement('div');
-        args.DOM.hamburger = document.createElement('div');
-        args.DOM.first_hamb_layer = document.createElement('span');
-        args.DOM.middle_hamb_layer = document.createElement('span');
-        args.DOM.last_hamb_layer = document.createElement('span');
-      } else if (args.DOM === undefined){
-          
-      }
-    };
+function NavDrawJS(options){
+if (typeof options === 'undefined') {
+    options = {};
+  }
   
-  var hamb =  args.DOM.hamburger,
-      first_hamb_layer = args.DOM.first_hamb_layer ? args.DOM.first_hamb_layer : document.getElementById('first_hamb_layer'),
-      middle_hamb_layer = args.DOM.middle_hamb_layer ? args.DOM.middle_hamb_layer : document.getElementById('middle_hamb_layer'),
-      last_hamb_layer = args.DOM.last_hamb_layer ? args.DOM.last_hamb_layer : document.getElementById('last_hamb_layer'),
+  function isDefined(flag,el,typ,defId,defClass){
+    function setEl(){
+      el = document.createElement(typ);
+      if (defId != '' && typeof defId !== 'undefined') { el.id = defId; }
+      if (defClass != '' && typeof defClass !== 'undefined') { el.className = defClass; }
+    }
+    if (typeof el === 'undefined' || flag === true) {
+      setEl();
+      return el;
+    } else {
+      el = document.getElementById(el);
+      if (el != null) { return el; }
+      else if (el == null) { setEl(); return el;}
+    }
+  }
+  
+  
+  
+  
+  options.header = isDefined(false,options.header,'div','header');
+  options.head_container = isDefined(false,options.head_container,'div','head_container')
+  options.nav_draw = isDefined(false,options.nav_draw,'div','nav_draw','closed');
+  options.nav_touch_bar = isDefined(false,options.nav_touch_bar,'div','nav_touch_bar');
+  options.hamburger = isDefined(true,options.hamburger,'div','hamburger');
+  options.first_hamb_layer = isDefined(true,options.first_hamb_layer,'span','first_hamb_layer','hamb_layer');
+  options.middle_hamb_layer = isDefined(true,options.middle_hamb_layer,'span','middle_hamb_layer','hamb_layer');
+  options.last_hamb_layer = isDefined(true,options.last_hamb_layer,'span','last_hamb_layer','hamb_layer');
+  
+  
+  options.hamburger.appendChild(options.first_hamb_layer);
+  options.hamburger.appendChild(options.middle_hamb_layer);
+  options.hamburger.appendChild(options.last_hamb_layer);
+  options.head_container.appendChild(options.hamburger);
+  options.head_container.appendChild(options.nav_draw);
+  options.head_container.appendChild(options.nav_touch_bar);
+  options.header.appendChild(options.head_container);
+  if (options.header.parentNode == null) document.body.insertBefore(options.header,document.body.firstChild);
+
+  var hamb = options.hamburger,
+      first_hamb_layer = options.first_hamb_layer,
+      middle_hamb_layer = options.middle_hamb_layer,
+      last_hamb_layer = options.last_hamb_layer,
       
-      nav_touch_bar = (args.DOM.nav_touch_bar) ? args.DOM.nav_touch_bar : document.getElementById('nav_touch_bar'),
-      nav_draw = (args.DOM.nav_draw) ? args.DOM.nav_draw : document.getElementById("nav_draw"),
+      nav_touch_bar = options.nav_touch_bar,
+      nav_draw = options.nav_draw,
       
       hamb_style = 
         " width: 50px;\
@@ -39,18 +68,34 @@ function NavDrawJS(args){
       touched = false,
       shiftX,
       
-      mobility = args.mobility ? args.mobility : false,
+      mobility = options.mobility,
       close_timeout,
       log_steps = 11;
       
       console.log('[1/'+log_steps+'] NavDraw: Elements Successfully Initialized');
       
       
+      
+  function initDOM(param){
+    if (param == 'all'){
+      options.header =  document.createElement('div');
+      options.head_container = document.createElement('div');
+      options.nav_draw = document.createElement('div');
+      options.nav_touch_bar = document.createElement('div');
+      options.hamburger = document.createElement('div');
+      initHamb();
+    }
+  }
+  function initHamb(){
+    options.first_hamb_layer = document.createElement('span');
+    options.middle_hamb_layer = document.createElement('span');
+    options.last_hamb_layer = document.createElement('span');
+  }
   function initStyles(){
-    hamb.style = "";
-    first_hamb_layer.style = layer_style;
-    middle_hamb_layer.style = layer_style;
-    last_hamb_layer.style = layer_style;
+    args.DOM.hamburger.style = "";
+    args.DOM.first_hamb_layer.style = layer_style;
+    args.DOM.middle_hamb_layer.style = layer_style;
+    args.DOM.last_hamb_layer.style = layer_style;
   }
   
   function addListener(el, type, handler, flag){
@@ -91,7 +136,9 @@ function NavDrawJS(args){
   console.log('[4/'+log_steps+'] NavDraw:  setTransition() Initialized');
   
   function placeDrawerLeft(rotate_temp){
-    timeout = setTimeout("if (nav_draw.className == 'closed') { hamb.style.transition = ''; hamb.style.transform = 'rotate(0deg)';} clearTimeout(timeout);",400);
+    timeout = setTimeout(function(){
+      if (nav_draw.className == 'closed') { hamb.style.transition = ''; hamb.style.transform = 'rotate(0deg)';} clearTimeout(timeout);
+    },400);
     nav_draw.className = 'closed';
     nav_draw.style.left = -270;
     setTransition('.3s');
@@ -218,4 +265,4 @@ function NavDrawJS(args){
   console.log('[11/'+log_steps+'] NavDraw:  Events Attached');
   console.log('NavDraw:  NavDraw is finaly initialized and ready to work :)');
   console.info('#### Powered by [C-h-R-o-N-o-T-o-N-i-U-m] 2016 ####');
-}
+  }
