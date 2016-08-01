@@ -1,35 +1,29 @@
 <html>
   <head>
-<title>NawDraw - Example</title>
+<title>UBN - Welcome</title>
 
-<link rel="stylesheet" type="text/css" href="css/navdraw.css">
 
-<script type="text/javascript" src="js/navdraw.js"></script>
+<meta name="viewport" content="width = device-width; initial-scale = 1.0; max-scale = 1.0; user-scalable = no;">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragma" content="no-cache" />
+
+<link rel="stylesheet" type="text/css" href="main.css">
+
+<script type="text/javascript" src="navdraw.js"></script>
 <script type="text/javascript">
-  window.onload = function(){
-    NavDrawJS();
-  };
+window.onload = function(){
+  NavDrawJS({
+    header: 'header',
+    nav_draw: 'nav_draw'
+  });
 </script>
-
   </head>
 <body>
-<!--
-<div id="header">
-  <div id="head_container">
-    <div id="hamb">
-      <span id="first_hamb_layer" class="hamb_layer"></span>
-      <span id="middle_hamb_layer" class="hamb_layer"></span>
-      <span id="last_hamb_layer" class="hamb_layer"></span>
-    </div>
-    <div id="nav_touch_bar"></div>
-    <div id="nav_draw" class="closed">
-      <span id="nav_draw_head">Navigation Drawer Head</span>
-      <span id="nav_draw_item">Navigation Drawer Item</span>
-      <span id="nav_draw_item">Navigation Drawer Item</span>
-      <span id="nav_draw_item">Navigation Drawer Item</span>
-    </div>
-  </div>
+<div id="nav_draw" class="closed">
+  <span id="nav_draw_head">Navigation Drawer Head</span>
+  <span id="nav_draw_item">Navigation Drawer Item</span>
+  <span id="nav_draw_item">Navigation Drawer Item</span>
+  <span id="nav_draw_item">Navigation Drawer Item</span>
 </div>
--->
 </body>
 </html>
