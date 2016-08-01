@@ -1,1 +1,30 @@
+<html>
+  <head>
+<title>NavDraw - Demo</title>
 
+
+<meta name="viewport" content="width = device-width; initial-scale = 1.0; max-scale = 1.0; user-scalable = no;">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragma" content="no-cache" />
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript" src="js/navdraw.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+  NavDrawJS({
+    header: 'header',
+    nav_draw: 'nav_draw'
+  });
+}
+</script>
+  </head>
+<body>
+<div id="nav_draw" class="closed">
+  <span id="nav_draw_head">Navigation Drawer Head</span>
+  <span id="nav_draw_item">Navigation Drawer Item</span>
+  <span id="nav_draw_item">Navigation Drawer Item</span>
+  <span id="nav_draw_item">Navigation Drawer Item</span>
+</div>
+</body>
+</html>
