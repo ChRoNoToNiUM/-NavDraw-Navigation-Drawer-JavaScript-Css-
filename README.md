@@ -1,4 +1,4 @@
-# NawDrawJS
+# NavDrawJS
 ## Contents:
  *  <a href="#Demo">Demonstration</a>
  *  <a href="#Description">Description</a>
