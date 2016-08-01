@@ -1,5 +1,7 @@
-function NavDrawJS(args){
-  if (typeof options === 'undefined') { options = {}; }
+function NavDrawJS(options){
+  if (typeof options === 'undefined') {
+    options = {};
+  }
   
   function isDefined(flag,el,typ,defId,defClass){
     function setEl(){
@@ -17,6 +19,9 @@ function NavDrawJS(args){
     }
   }
   
+  
+  
+  
   options.header = isDefined(false,options.header,'div','header');
   options.head_container = isDefined(false,options.head_container,'div','head_container')
   options.nav_draw = isDefined(false,options.nav_draw,'div','nav_draw','closed');
@@ -25,6 +30,7 @@ function NavDrawJS(args){
   options.first_hamb_layer = isDefined(true,options.first_hamb_layer,'span','first_hamb_layer','hamb_layer');
   options.middle_hamb_layer = isDefined(true,options.middle_hamb_layer,'span','middle_hamb_layer','hamb_layer');
   options.last_hamb_layer = isDefined(true,options.last_hamb_layer,'span','last_hamb_layer','hamb_layer');
+  
   
   options.hamburger.appendChild(options.first_hamb_layer);
   options.hamburger.appendChild(options.middle_hamb_layer);
@@ -56,15 +62,16 @@ function NavDrawJS(args){
           margin-top: 0;\
           background-color: #fff;\
         ",
-        
+      
+      
       pageX_temp,
       touched = false,
       shiftX,
       
       mobility = options.mobility,
-      close_timeout;
-      
-      
+      close_timeout,
+      log_steps = 11,
+      info = document.getElementById('info');
       
       
       
@@ -96,7 +103,6 @@ function NavDrawJS(args){
   }
   
   
-  
   function getCoords(elem) {
     var box = elem.getBoundingClientRect(),
         body = document.body,
@@ -117,7 +123,6 @@ function NavDrawJS(args){
     };
   }
   
-  
   function setTransition(trans){
     nav_draw.style.transition = 'left '+trans;
     hamb.style.transition = 'transform '+trans;
@@ -125,7 +130,6 @@ function NavDrawJS(args){
     middle_hamb_layer.style.transition = '';
     last_hamb_layer.style.transition = 'width '+trans+', margin '+trans+', transform '+trans;
   }
-  
   
   function placeDrawerLeft(rotate_temp){
     timeout = setTimeout(function(){
@@ -147,7 +151,6 @@ function NavDrawJS(args){
     last_hamb_layer.style.transform = '';
   }
   
-  
   function placeDrawerRight(){
     nav_draw.className = 'opened';
     nav_draw.style.left = 0;
@@ -165,26 +168,24 @@ function NavDrawJS(args){
     last_hamb_layer.style.transform = 'rotate(-45deg) translateX(3px) translateY(-2px)';
   }
   
-  
   function hamurgerClick(){
     if (nav_draw.className == 'opened'){ placeDrawerLeft(); }
     else if (nav_draw.className == 'closed'){ placeDrawerRight(); }
   }
   
-  
-  
-  nav_draw.onmousedown = function () {return false};
+  window.onmousedown = function(){event.preventDefault ? event.preventDefault() : event.returnValue = false}
   
   window.onmousedown = function (ev){
       shiftX = ev.pageX - getCoords(nav_draw).left;
       pageX_temp = ev.pageX;
     if (ev.target == nav_touch_bar || ev.target == nav_draw || ev.target.parentNode == nav_draw) { touched = true; }
     else { touched = false; }
+    window.ondragstart = function(){touched = false}
   };
   
   
-  
   window.onmousemove = function(ev){
+    info.innerHTML = ev.type;
     var pageX = (mobility) ? ev.touches[0].pageX : ev.pageX,
         xPage = (ev.pageX - shiftX - getCoords(document.body).left) * 100/270,
         arr_width = 17-(xPage * 8/100),
@@ -233,6 +234,7 @@ function NavDrawJS(args){
     }
   };
   
+  
   window.onmouseup = function(ev){
     var nav_bar_offsetLeft = getCoords(nav_draw).left;
     
@@ -248,7 +250,6 @@ function NavDrawJS(args){
       }
     }
   };
-  
   
   addListener(hamb, 'click', hamurgerClick, false);
 }
