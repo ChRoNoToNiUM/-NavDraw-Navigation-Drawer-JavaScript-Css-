@@ -6,7 +6,7 @@
  *  <a href="#Versions">Versions</a>
 
 # <a name="Demo">Demo </a>
-### [Click For Demo](https://chronotonium.github.io/NawDrawJS/)
+### [Click For Demo](https://chronotonium.github.io/NavDrawJS/)
 <img src="demo/demo.gif">
 
 # <a name="Description">Description</a>
