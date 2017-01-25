@@ -68,7 +68,7 @@ function NavDrawJS(options){
       touched = false,
       shiftX,
       
-      mobility = options.mobility,
+      mobility = false,
       close_timeout,
       log_steps = 11,
       info = document.getElementById('info');
