@@ -210,7 +210,7 @@ function NavDrawJS(options){
     
     
     if (touched){
-      if (ev.taget == document.html){
+      if (ev.target == document.html){
         if (nav_draw_newLeft != -270 && nav_draw_newLeft != 0){
           if (nav_draw.className == 'closed'){
             nav_draw.className == 'opened'
