@@ -68,7 +68,7 @@ if (typeof options === 'undefined') {
       touched = false,
       shiftX,
       
-      mobility = options.mobility,
+      mobility = false,
       close_timeout,
       log_steps = 11;
       
