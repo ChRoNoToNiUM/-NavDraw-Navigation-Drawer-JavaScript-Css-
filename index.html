@@ -1,1 +1,81 @@
-hello james
+<html>
+  <head><title>NavDrawJS Demo</title>
+
+  <meta name="viewport" content="initial-scale=1.0,min-scale=1.0,max-scale=1.0,width=device-width,user-scalable=no">
+
+  <link rel="stylesheet" type="text/CSS" href="/css/navdraw.css">
+
+
+  <script type="text/javascript" src="/js/navdraw.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById("header").style.opacity = 0.98;
+      
+      var hamburger_body = document.getElementById("hamburger"),
+          hamburger_circle = document.getElementById("hamburger_circle"),
+          top_hr = document.getElementById("top_hr"),
+          mid_hr = document.getElementById("middle_hr"),
+          bot_hr = document.getElementById("bottom_hr"),
+          nav_touch_bar = document.getElementById("navdraw_touch_bar"),
+          theDraw = document.getElementById("nav_draw"),
+          theContent = document.getElementById("content"),
+          contentHover = document.getElementById("content_hover"),
+          contentWrapper = document.getElementById("content_wrapper");
+      NavDrawJS({
+          nav_draw: theDraw,
+          nav_touch_bar: nav_touch_bar,
+          hamburger: hamburger_circle,
+          first_hamb_layer: top_hr,
+          middle_hamb_layer: mid_hr,
+          last_hamb_layer: bot_hr
+      })
+    }
+</script>
+    
+</head>
+  <body>
+<div id="nav_draw">
+  <div id="nav_draw_wrapper">
+      <div class="head">Header</div>
+
+      <a href='#'><div class="item">Home</div></a>
+      <div class="item">News</div>
+      <div class="item">Forum</div>
+      <div class="item">Help</div>
+      <div class="item">FAQ</div>
+      <div class="item">About Us</div>
+  </div>
+</div>
+<div id="header_wrapper">
+  <div id="header">
+  <div id="left_bar">
+    <div id="hamburger">
+      <div id="hamburger_circle">
+        <span class="hamburger_hr" id="top_hr"></span>
+        <span class="hamburger_hr" id="middle_hr"></span>
+        <span class="hamburger_hr" id="bottom_hr"></span>
+      </div>
+    </div>
+    <div id="navdraw_touch_bar"></div>
+  </div>
+  <div id="logo_title">mellogang</div>
+  <div id="right-bar"></div>
+  </div>
+</div>
+<div id="content_hover"></div>
+<div id="content">
+  <div id="content_wrapper">
+  <div id="info"></div>
+
+    <script type="text/javscript">
+      var i = 0;
+
+      while($i<10000){
+        document.write(i + "<br>");
+        i++;
+      }
+    </script>
+  </div>
+</div>
+  </body>
+</html>
