@@ -259,6 +259,7 @@ function NavDrawJS(options){
         setTransition();
         if (
             ev.target == options.nav_touch_bar ||
+            ev.target == options.nav_draw ||
             isDescendant(options.nav_draw, ev.target)
         ){
             touched = true;
